@@ -1,0 +1,56 @@
+{
+    "protoss" : {
+        "zealot" : {
+            "name": "Zealot",
+            "race": "Protoss",
+            "attributes": {
+                "attack": 16,
+                "attack_type": "Ground",
+                "healt": 100,
+                "armor": 1,
+                "shield": 50,
+                "supply_consumption": 2,
+                "speed": 3.15,
+                "ranged": false
+            },
+            "cost_research": {},
+            "cost_training": {
+                "crystal": 100,
+                "gas": 0, 
+                "time": 30
+            },
+            "upgrades": {
+                "attack": 2,
+                "armor": 1
+            },
+            "can_attack_ground": true,
+            "can_attack_air": false
+        },
+        "stalker" : {
+            "name": "Stalker",
+            "race": "Protoss",
+            "attributes": {
+                "attack": 16,
+                "attack_type": "Ground",
+                "healt": 100,
+                "armor": 1,
+                "shield": 50,
+                "supply_consumption": 2,
+                "speed": 3.15,
+                "ranged": false
+            },
+            "cost_research": {},
+            "cost_training": {
+                "crystal": 125,
+                "gas": 0, 
+                "time": 30
+            },
+            "upgrades": {
+                "attack": 2,
+                "armor": 1
+            },
+            "can_attack_ground": true,
+            "can_attack_air": false
+        }
+    }
+}
