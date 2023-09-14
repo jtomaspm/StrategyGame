@@ -11,7 +11,8 @@
                 "shield": 50,
                 "supply_consumption": 2,
                 "speed": 3.15,
-                "ranged": false
+                "ranged": false,
+                "iniciative": 5
             },
             "cost_research": {},
             "cost_training": {
@@ -30,27 +31,63 @@
             "name": "Stalker",
             "race": "Protoss",
             "attributes": {
-                "attack": 16,
+                "attack": 18,
                 "attack_type": "Ground",
-                "healt": 100,
+                "healt": 80,
                 "armor": 1,
-                "shield": 50,
+                "shield": 80,
                 "supply_consumption": 2,
-                "speed": 3.15,
-                "ranged": false
+                "speed": 4.13,
+                "ranged": true,
+                "iniciative": 12
             },
-            "cost_research": {},
+            "cost_research": {
+                "crystal": 375,
+                "gas": 150, 
+                "time": 135
+            },
             "cost_training": {
                 "crystal": 125,
-                "gas": 0, 
-                "time": 30
+                "gas": 50, 
+                "time": 45
             },
             "upgrades": {
-                "attack": 2,
+                "attack": 1,
                 "armor": 1
             },
             "can_attack_ground": true,
-            "can_attack_air": false
+            "can_attack_air": true
+        },
+        "" : {
+            "name": "Stalker",
+            "race": "Protoss",
+            "attributes": {
+                "attack": 18,
+                "attack_type": "Ground",
+                "healt": 80,
+                "armor": 1,
+                "shield": 80,
+                "supply_consumption": 2,
+                "speed": 4.13,
+                "ranged": true,
+                "iniciative": 12
+            },
+            "cost_research": {
+                "crystal": 375,
+                "gas": 150, 
+                "time": 135
+            },
+            "cost_training": {
+                "crystal": 125,
+                "gas": 50, 
+                "time": 45
+            },
+            "upgrades": {
+                "attack": 1,
+                "armor": 1
+            },
+            "can_attack_ground": true,
+            "can_attack_air": true
         }
     }
 }
