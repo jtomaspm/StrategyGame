@@ -11,8 +11,8 @@ app = FastAPI()
 auth_service = AuthService()
 
 @app.post("/validate/", response_model=None)
-async def validate(token: Token):
-    return auth_service.validate_token(token)
+async def validate(token: Token, ip_address: str):
+    return auth_service.validate_token(token, ip_address)
 
 @app.post("/login/", response_model=None)
 async def generate_token(payload: PayloadData):

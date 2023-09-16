@@ -9,9 +9,11 @@ from ..models.token import Token, TokenWithExpireTime
 class AuthService:
     redis_service = RedisService()
 
-    def validate_token(self, token: Token):
+    def validate_token(self, token: Token, ip_address: str):
         token_data = self.redis_service.get_token(token.access_token)
         if token_data.refresh_token == token.refresh_token:
+            if not token_data.ip_address == ip_address:
+                return {"status": "New IP address detected"}
             if time.time() < token_data.expire_time_ms:
                 return {"status": "Valid"}
             else:
