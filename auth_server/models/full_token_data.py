@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
-from ..models.payload_data import PayloadData
-from ..models.token import Token
+from .payload_data import PayloadData
+from .token import Token
 
 
 @dataclass

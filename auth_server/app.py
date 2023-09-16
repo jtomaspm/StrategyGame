@@ -1,20 +1,18 @@
 from contextvars import Token
 from fastapi import FastAPI
+
 from auth_server.models.payload_data import PayloadData
-import time
-from services.redis_service import RedisService
+
+from .services.auth_service import AuthService
+from .services.redis_service import RedisService
 
 app = FastAPI()
-redis_service = RedisService()
+auth_service = AuthService()
 
 @app.post("/validate/")
-async def validate_token(token: Token):
-    token_data = redis_service.get_token(token.access_token)
-    if token_data.refresh_token == token.refresh_token:
-        if time.time() < token.expire_time_ms:
-            return {"status": "Valid",
-                    "payload": PayloadData(**token_data.__dict__),
-                    "token": token}
-        else:
-            return {"status": "Expired"}
-    return {"status": "Invalid"}
+async def validate(token: Token):
+    return auth_service.validate_token(token)
+
+@app.post("/login/")
+async def generate_token(payload: PayloadData):
+    return auth_service.generate_token(payload, 30)

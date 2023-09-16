@@ -1,3 +1,5 @@
+import random
+import string
 import jwt
 
 from ..models.payload_data import PayloadData
@@ -11,3 +13,6 @@ def decode_jwt_token(token : str, secret : str) -> PayloadData:
         token,
         secret,
         algorithms=[header_data["alg"]]))
+
+def get_refresh_token() -> str:
+    return "".join(random.choices(string.ascii_letters + string.digits, k=20))
