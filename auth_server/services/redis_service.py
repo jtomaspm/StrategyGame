@@ -1,4 +1,5 @@
 import redis
+import logging
 
 from ..settings import SECRET_KEY
 
@@ -18,15 +19,13 @@ class RedisService:
 
     def get_token(self, access_token: str) -> FullTokenData:
         payload = decode_jwt_token(access_token, SECRET_KEY)
-        print(payload)
-        print("------------------------------------------------------")
         key = "token:"+str(payload.player_id)
-        print(key)
-        print("------------------------------------------------------")
         token = self.r.hgetall(key)
         token["expire_time_ms"] = float(token["expire_time_ms"])
-        print(token)
-        print("------------------------------------------------------")
+
+        logging.debug(payload)
+        logging.debug(key)
+        logging.debug(token)
 
         return FullTokenData(**token, **payload.__dict__)
 
