@@ -22,7 +22,6 @@ class TestRedis(unittest.TestCase):
                 ip_address="1.1.1.1"
                 ),
             secret=SECRET_KEY),
-        expire_time_ms=time.time() + 3600,
         refresh_token=get_refresh_token()
     )
 
