@@ -3,6 +3,8 @@ from dataclasses import dataclass
 
 @dataclass
 class PayloadData:
-    sub: int
+    player_id: int
     name: str
-    nickname: str
+    email: str
+    roles: list(str)
+    ip_address: str

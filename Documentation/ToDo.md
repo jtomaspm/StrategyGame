@@ -1,9 +1,10 @@
 # TODO
 
-- [ ] Create base units based on **starcraft / tribal wars / travian** stats
+- [x] Create base units based on **starcraft / tribal wars / travian** stats
 - [ ] Decide on the battle system
 - [ ] Add +1 attack upgrade per level to stakers
 - [ ] Add phoenix can attack all units for the first 4 turns
+- [ ] Refactor troop classes to use dataclasses properlly
 
 
 # Idea
