@@ -1,11 +1,11 @@
 from abc import ABC
 from dataclasses import dataclass
-from core.base_types.cost.cost import TimedCost
+from ...cost.cost import TimedCost
 
-from core.base_types.races.race import Race
-from core.base_types.troops.base_troop.troop_attributes import TroopAttributes
-from core.base_types.troops.base_troop.troop_rules import TroopRules
-from core.base_types.troops.base_troop.troop_upgrade import TroopUpgrade
+from ...races.race import Race
+from base_troop.troop_attributes import TroopAttributes
+from base_troop.troop_rules import TroopRules
+from base_troop.troop_upgrade import TroopUpgrade
 
 
 @dataclass

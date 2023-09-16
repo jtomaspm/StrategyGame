@@ -1,9 +1,10 @@
-from core.base_types.cost.cost import TimedCost
-from core.base_types.races.protoss import Protoss
-from core.base_types.troops.base_troop.troop import Troop
-from core.base_types.troops.base_troop.troop_attributes import TroopAttributes
-from core.base_types.troops.base_troop.troop_rules import TroopRules
-from core.base_types.troops.base_troop.troop_upgrade import TroopUpgrade
+from ...cost.cost import TimedCost
+from ...races.protoss import Protoss
+from ..base_troop.troop import Troop
+from ..base_troop.troop_attributes import TroopAttributes
+from ..base_troop.troop_rules import TroopRules
+from ..base_troop.troop_upgrade import TroopUpgrade
+
 
 
 class VoidRay(Troop):
