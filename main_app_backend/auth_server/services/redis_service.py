@@ -1,7 +1,7 @@
 import redis
 import logging
 
-from ..settings import SECRET_KEY
+from ..settings import REDIS_HOST, REDIS_PORT, SECRET_KEY
 
 from .jwt_service import decode_jwt_token
 
@@ -11,7 +11,7 @@ from ..models.token import Token, TokenWithExpireTime
 
 
 class RedisService:
-    r = redis.Redis(host='localhost', port=6379, decode_responses=True)
+    r = redis.Redis(host=REDIS_HOST, port=REDIS_PORT, decode_responses=True)
 
     def save_token(self, token: TokenWithExpireTime):
         payload = decode_jwt_token(token.access_token, SECRET_KEY)

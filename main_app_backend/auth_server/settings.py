@@ -11,3 +11,5 @@ logging.basicConfig(level=logging.DEBUG,
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
 TOKEN_DURATION_MINUTES = int(os.environ.get("TOKEN_DURATION_MINUTES"))
+REDIS_HOST = os.environ.get("REDIS_HOST")
+REDIS_PORT = os.environ.get("REDIS_PORT")
