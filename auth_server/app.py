@@ -13,7 +13,7 @@ auth_service = AuthService()
 @app.post("/validate/", response_model=None)
 async def validate(token: Token):
     status = auth_service.validate_token(token)
-    return status if status["status"] == "Valid" else status, 401
+    return status if status["status"] == "Valid" else status
 
 @app.post("/login/", response_model=None)
 async def generate_token(payload: PayloadData):
@@ -22,7 +22,7 @@ async def generate_token(payload: PayloadData):
 @app.post("/refresh/", response_model=None)
 async def refresh_token(token: Token):
     refreshed_token = auth_service.refresh_token(token, TOKEN_DURATION_MINUTES)
-    return refreshed_token if refreshed_token else {"status": "Invalid"}, 401
+    return refreshed_token if refreshed_token else {"status": "Invalid"}
 
 @app.post("/logout/", response_model=None)
 async def logout(token: Token):

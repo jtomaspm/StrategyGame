@@ -1,10 +1,12 @@
 from dataclasses import dataclass
 
-from pydantic import BaseModel
 
 
 @dataclass
-class Token(BaseModel):
+class Token:
     access_token: str
     refresh_token: str
-    expire_time_ms: int
+
+@dataclass
+class TokenWithExpireTime(Token):
+    expire_time_ms: float

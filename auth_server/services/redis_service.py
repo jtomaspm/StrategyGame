@@ -6,21 +6,30 @@ from .jwt_service import decode_jwt_token
 
 from ..models.full_token_data import FullTokenData
 
-from ..models.payload_data import PayloadData
-from ..models.token import Token
+from ..models.token import Token, TokenWithExpireTime
 
 
 class RedisService:
     r = redis.Redis(host='localhost', port=6379, decode_responses=True)
 
-    def save_token(self, token: Token):
+    def save_token(self, token: TokenWithExpireTime):
         payload = decode_jwt_token(token.access_token, SECRET_KEY)
-        self.r.hset("token:"+payload.player_id, mapping=token)
+        self.r.hset("token:"+str(payload.player_id), mapping=token.__dict__)
 
     def get_token(self, access_token: str) -> FullTokenData:
         payload = decode_jwt_token(access_token, SECRET_KEY)
-        return FullTokenData(**self.r.hgetall("token:"+payload.player_id), **payload.__dict__)
+        print(payload)
+        print("------------------------------------------------------")
+        key = "token:"+str(payload.player_id)
+        print(key)
+        print("------------------------------------------------------")
+        token = self.r.hgetall(key)
+        token["expire_time_ms"] = float(token["expire_time_ms"])
+        print(token)
+        print("------------------------------------------------------")
+
+        return FullTokenData(**token, **payload.__dict__)
 
     def delete_token(self, token: Token):
         payload = decode_jwt_token(token.access_token, SECRET_KEY)
-        self.r.delete("token:"+payload.player_id)
+        self.r.delete("token:"+str(payload.player_id))

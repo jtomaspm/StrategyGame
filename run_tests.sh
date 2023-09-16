@@ -1,0 +1,1 @@
+python3 -m unittest auth_server/tests/test_redis.py
