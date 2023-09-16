@@ -9,8 +9,8 @@ from ..models.token import Token
 class AuthService:
     redis_service = RedisService()
 
-    def validate_token(token: Token):
-        token_data = redis_service.get_token(token.access_token)
+    def validate_token(self, token: Token):
+        token_data = self.redis_service.get_token(token.access_token)
         if token_data.refresh_token == token.refresh_token:
             if time.time() < token.expire_time_ms:
                 return {"status": "Valid"}
@@ -19,9 +19,18 @@ class AuthService:
         return {"status": "Invalid"}
 
         
-    def generate_token(payload: PayloadData, token_duration_minutes: int) -> Token:
+    def generate_token(self, payload: PayloadData, token_duration_minutes: int) -> Token:
         return Token(
             access_token=get_jwt_token(payload, SECRET_KEY),
             refresh_token=get_refresh_token(),
             expire_time_ms=time.time() + token_duration_minutes * 60 * 1000
         )
+
+    def logout(self, token: Token):
+        self.redis_service.delete_token(token)
+
+    def refresh_token(self, token: Token, token_duration_minutes: int) -> Token | None:
+        token_data = self.redis_service.get_token(token.access_token)
+        if token_data.refresh_token == token.refresh_token:
+            self.redis_service.delete_token(token)
+            return self.generate_token(PayloadData(player_id=token_data.player_id), token_duration_minutes)

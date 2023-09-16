@@ -20,3 +20,7 @@ class RedisService:
     def get_token(self, access_token: str) -> FullTokenData:
         payload = decode_jwt_token(access_token, SECRET_KEY)
         return FullTokenData(**self.r.hgetall("token:"+payload.player_id), **payload.__dict__)
+
+    def delete_token(self, token: Token):
+        payload = decode_jwt_token(token.access_token, SECRET_KEY)
+        self.r.delete("token:"+payload.player_id)
