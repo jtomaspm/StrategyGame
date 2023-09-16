@@ -1,10 +1,13 @@
+from ast import List
 from dataclasses import dataclass
+
+from pydantic import BaseModel
 
 
 @dataclass
-class PayloadData:
+class PayloadData(BaseModel):
     player_id: int
     name: str
     email: str
-    roles: list(str)
+    roles: str
     ip_address: str
