@@ -12,8 +12,7 @@ auth_service = AuthService()
 
 @app.post("/validate/", response_model=None)
 async def validate(token: Token):
-    status = auth_service.validate_token(token)
-    return status if status["status"] == "Valid" else status
+    return auth_service.validate_token(token)
 
 @app.post("/login/", response_model=None)
 async def generate_token(payload: PayloadData):
