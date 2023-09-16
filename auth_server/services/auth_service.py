@@ -37,4 +37,10 @@ class AuthService:
         token_data = self.redis_service.get_token(token.access_token)
         if token_data.refresh_token == token.refresh_token:
             self.redis_service.delete_token(token)
-            return self.generate_token(PayloadData(player_id=token_data.player_id), token_duration_minutes)
+            return self.generate_token(PayloadData(
+                email=token_data.email,
+                player_id=token_data.player_id,
+                name=token_data.name,
+                roles=token_data.roles,
+                ip_address=token_data.ip_address
+                ), token_duration_minutes)

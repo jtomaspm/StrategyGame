@@ -21,11 +21,12 @@ class RedisService:
         payload = decode_jwt_token(access_token, SECRET_KEY)
         key = "token:"+str(payload.player_id)
         token = self.r.hgetall(key)
-        token["expire_time_ms"] = float(token["expire_time_ms"])
 
         logging.debug(payload)
         logging.debug(key)
         logging.debug(token)
+
+        token["expire_time_ms"] = float(token["expire_time_ms"])
 
         return FullTokenData(**token, **payload.__dict__)
 
