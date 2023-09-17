@@ -10,3 +10,4 @@ logging.basicConfig(level=logging.DEBUG,
                     datefmt='%Y-%m-%d %H:%M:%S')
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
+DATABASE_URL = os.environ.get("DATABASE_URL")
