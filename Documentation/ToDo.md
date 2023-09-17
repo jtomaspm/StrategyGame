@@ -5,6 +5,7 @@
 - [ ] Add +1 attack upgrade per level to stakers
 - [ ] Add phoenix can attack all units for the first 4 turns
 - [ ] Refactor troop classes to use dataclasses properlly
+- [ ] Add email confirmation to user_service
 
 
 # Idea
